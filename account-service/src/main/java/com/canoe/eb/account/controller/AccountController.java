@@ -11,6 +11,11 @@ public class AccountController {
 
     @PostMapping("register")
     public String register(@RequestParam String account, @RequestParam String password) {
+
+
+
         return null;
+
+
     }
 }
