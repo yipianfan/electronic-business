@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
     @PostMapping("register")
-    public String register(@RequestParam String account, @RequestParam String password){
-        return "{account:" + account + ",password:" + password + "}";
+    public String register(@RequestParam String account, @RequestParam String password) {
+        return null;
     }
 }
