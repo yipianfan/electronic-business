@@ -6,9 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>electronic-business</artifactId>
         <groupId>com.canoe.eb</groupId>
+        <artifactId>project-parent</artifactId>
         <version>1.0.0</version>
+        <relativePath>../project-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>com.canoe.eb.account</groupId>
@@ -21,14 +22,6 @@
             <groupId>com.canoe.eb.common</groupId>
             <artifactId>common</artifactId>
             <version>1.0.0</version>
-        </dependency>
-
-        <!--Test Framework-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

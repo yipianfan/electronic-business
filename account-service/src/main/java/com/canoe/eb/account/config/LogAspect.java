@@ -24,6 +24,7 @@ public class LogAspect {
         HttpServletRequest request = sra.getRequest();
         Map<String, String[]> parameter = request.getParameterMap();
 
-        JSONObject.toJSONString(parameter);
+        String log = JSONObject.toJSONString(parameter);
+        System.out.println(log);
     }
 }
