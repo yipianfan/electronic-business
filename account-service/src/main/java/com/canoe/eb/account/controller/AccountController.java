@@ -1,5 +1,6 @@
 package com.canoe.eb.account.controller;
 
+import com.canoe.eb.account.bean.dto.AccountRegisterDTO;
 import com.canoe.eb.common.entity.ResEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +17,12 @@ import static com.canoe.eb.common.entity.ResEntity.ok;
 public class AccountController {
 
     @PostMapping("register")
-    public ResEntity<Map<String, String>> register(@RequestParam String account,
-                                                   @RequestParam String password) {
-        Map<String, String> map = new HashMap<>();
-        map.put("account", account);
-        map.put("password", password);
-        return ok(map);
+    public ResEntity<Map<String, Object>> register(AccountRegisterDTO dto) {
+
+
+        Map<String, Object> result = new HashMap<>(2);
+        result.put("account", dto.getAccount());
+        result.put("role", dto.getRole());
+        return ok(result);
     }
 }
