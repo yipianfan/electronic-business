@@ -3,29 +3,29 @@ package com.canoe.eb.account;
 public class App {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode("A");
-        TreeNode b = new TreeNode("B");
-        TreeNode c = new TreeNode("C");
+        TempTreeNode root = new TempTreeNode("A");
+        TempTreeNode b = new TempTreeNode("B");
+        TempTreeNode c = new TempTreeNode("C");
         root.left = b;
         root.right = c;
 
-        TreeNode d = new TreeNode("D");
-        TreeNode e = new TreeNode("E");
+        TempTreeNode d = new TempTreeNode("D");
+        TempTreeNode e = new TempTreeNode("E");
         b.left = d;
         b.right = e;
 
-        TreeNode f = new TreeNode("F");
-        TreeNode g = new TreeNode("G");
+        TempTreeNode f = new TempTreeNode("F");
+        TempTreeNode g = new TempTreeNode("G");
         c.left = f;
         c.right = g;
 
-        TreeNode h = new TreeNode("H");
-        TreeNode i = new TreeNode("I");
+        TempTreeNode h = new TempTreeNode("H");
+        TempTreeNode i = new TempTreeNode("I");
         d.left = h;
         d.right = i;
 
-        TreeNode j = new TreeNode("J");
-        TreeNode k = new TreeNode("K");
+        TempTreeNode j = new TempTreeNode("J");
+        TempTreeNode k = new TempTreeNode("K");
         g.left = j;
         j.right = k;
 
@@ -37,19 +37,19 @@ public class App {
     }
 
 
-    public static void preOrderRe(TreeNode biTree) {
+    public static void preOrderRe(TempTreeNode biTree) {
         System.out.print(biTree.value);
-        TreeNode leftTree = biTree.left;
+        TempTreeNode leftTree = biTree.left;
         if (leftTree != null) {
             preOrderRe(leftTree);
         }
-        TreeNode rightTree = biTree.right;
+        TempTreeNode rightTree = biTree.right;
         if (rightTree != null) {
             preOrderRe(rightTree);
         }
     }
 
-    public static void midOrderRe(TreeNode biTree) {//中序遍历递归实现
+    public static void midOrderRe(TempTreeNode biTree) {//中序遍历递归实现
         if (biTree == null)
             return;
         else {
@@ -59,7 +59,7 @@ public class App {
         }
     }
 
-    public static void postOrderRe(TreeNode biTree) {//后序遍历递归实现
+    public static void postOrderRe(TempTreeNode biTree) {//后序遍历递归实现
         if (biTree == null)
             return;
         else {
