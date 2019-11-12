@@ -1,4 +1,4 @@
-package com.canoe.eb.account;
+package demo;
 
 public class App {
 
@@ -29,24 +29,26 @@ public class App {
         g.left = j;
         j.right = k;
 
-        preOrderRe(root);
-        System.out.println();
+        //================================================================
+        /*TempTreeNode m = new TempTreeNode("M");
+        TempTreeNode n = new TempTreeNode("N");
+        i.left = m;
+        i.right = n;*/
+
+        System.out.println("前序:");
+        preOrder(root);
+        /*System.out.println("中序:");
         midOrderRe(root);
-        System.out.println();
-        postOrderRe(root);
+        System.out.println("后序:");
+        postOrderRe(root);*/
     }
 
-
-    public static void preOrderRe(TempTreeNode biTree) {
-        System.out.print(biTree.value);
-        TempTreeNode leftTree = biTree.left;
-        if (leftTree != null) {
-            preOrderRe(leftTree);
-        }
-        TempTreeNode rightTree = biTree.right;
-        if (rightTree != null) {
-            preOrderRe(rightTree);
-        }
+    static void preOrder(TempTreeNode node) {
+        System.out.print(node.value);
+        if(node.left != null)
+            preOrder(node.left);
+        if(node.right != null)
+            preOrder(node.right);
     }
 
     public static void midOrderRe(TempTreeNode biTree) {//中序遍历递归实现

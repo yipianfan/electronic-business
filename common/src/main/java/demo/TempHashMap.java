@@ -1,4 +1,4 @@
-package com.canoe.eb.account;
+package demo;
 
 import java.util.HashMap;
 

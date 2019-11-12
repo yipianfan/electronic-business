@@ -1,4 +1,4 @@
-package com.canoe.eb.account;
+package demo;
 
 public class TempTreeNode {
     public TempTreeNode left;
