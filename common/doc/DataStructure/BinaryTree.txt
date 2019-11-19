@@ -1,2 +1,4 @@
 二叉树(Binary Tree)
-    1. 哈夫曼树(Huffman Tree) 又名最优二叉树
+    1 哈夫曼树(Huffman Tree) 又名最优二叉树
+    2 平衡树(balanced binary tree) 又名平衡二叉树
+        2.1.1 红黑树(Red-black tree) 又名对称二叉B树
