@@ -1,0 +1,17 @@
+Java内存模型(Java Memory Model)即"Run-Time Data Areas",
+以下内容均来自Java8官方文档"https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5"
+包括如下块:
+    1. PC Register(PC 寄存器)又叫程序计数器(Program Counter)
+       a. 线程私有
+       b. 如果执行的不是本地方法，则PC寄存器包含的是当前正在执行的JVM指令地址
+
+    2. Stack
+        2.1.1 Java Virtual Machine Stacks
+              a. 线程私有
+              b. 存储桢(Frame)
+              c. 存储局部变量
+              d. 内存不需要连续分配
+              f. 允许将JVM栈设为固定大小,也可以让JVM栈根据计算动态扩展或收缩
+        2.1.2 Native Method Stacks
+
+    3. Heap
