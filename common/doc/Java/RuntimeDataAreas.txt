@@ -13,6 +13,7 @@ Java内存模型(Java Memory Model)即"Run-Time Data Areas",
               d. 内存不需要连续分配
               f. 允许将JVM栈设为固定大小,也可以让JVM栈根据计算动态扩展或收缩
         2.1.2 Native Method Stacks
+              a. 线程私有
 
     3. Heap
        a. 线程公有
@@ -21,3 +22,4 @@ Java内存模型(Java Memory Model)即"Run-Time Data Areas",
     4. Method Area
        a. 线程公有
        b. 存储每个类的结构,如:run-time constant pool(运行时常量池),字段,方法数据,方法与构造函数的代码
+       Run-Time Constant Pool:存放类和接口中的常量
