@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
-    // 101023
+
     public static void main(String[] args) {
-        String content = "fabccbadbacjiahijklmnopqiiqponmlkj";
+        String content = "";
         String subContent = longestPalindrome(content);
         System.out.println(subContent);
     }
 
+    /**
+     * 回文
+     * s = fabccbadbacjiahijklmnopqiiqponmlkj
+     */
     public static String longestPalindrome(String s) {
         for (int size = s.length(); size > 0; size--) {
             for (int low = 0, high = low + size - 1; high < s.length(); low++, high++) {
@@ -21,6 +25,9 @@ public class App {
         return s.substring(0, 1);
     }
 
+    /**
+     * 回文
+     */
     public static boolean shrinkCheckPalindrome(String s, int low, int high) {
         while (low <= high) {
             if (s.charAt(low) == s.charAt(high)) {
@@ -55,6 +62,7 @@ public class App {
 
     /**
      * 输出输入的字符串有效的ip
+     * 101023
      */
     public static List<String> restore(String s) {
         List<String> ret = new ArrayList<>();
