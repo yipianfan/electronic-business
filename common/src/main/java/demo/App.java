@@ -1,14 +1,27 @@
 package demo;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
+    static Charset charset = Charset.forName("UTF-8");
 
-    public static void main(String[] args) {
-        String content = "";
-        String subContent = longestPalindrome(content);
-        System.out.println(subContent);
+    public static void main(String[] args) throws IOException {
+        FileChannel fChannel = new FileInputStream("").getChannel();
+        SocketChannel sChannel = SocketChannel.open();
+        sChannel.configureBlocking(false);
+        sChannel.connect(new InetSocketAddress("127.0.0.1", 80));
+        while (!sChannel.finishConnect()) {
+
+        }
+        ByteBuffer fileBuffer = charset.encode("C:\\Users\\lihailen\\Desktop\\nio.txt");
     }
 
     /**
