@@ -4,24 +4,68 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class App {
     static Charset charset = Charset.forName("UTF-8");
 
     public static void main(String[] args) throws IOException {
-        FileChannel fChannel = new FileInputStream("").getChannel();
+        int write = 10, read = 1;
+        Selector selector = Selector.open();
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.configureBlocking(false);
+        serverSocketChannel.bind(new InetSocketAddress(2019));
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+
+        // 轮询，选择感兴趣的IO就绪事件
+        while(selector.select() > 0) {
+            Set<SelectionKey> selectedKeys = selector.selectedKeys();
+            Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
+            while(keyIterator.hasNext()) {
+                SelectionKey key = keyIterator.next();
+                // 根据具体的IO事件进行相应的业务操作
+                if(key.isAcceptable()) {
+
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        if(write > read)
+            return;
+
+        FileChannel fChannel = new FileInputStream("C:\\Users\\hailen\\Desktop\\nio.txt").getChannel();
         SocketChannel sChannel = SocketChannel.open();
         sChannel.configureBlocking(false);
         sChannel.connect(new InetSocketAddress("127.0.0.1", 80));
         while (!sChannel.finishConnect()) {
-
+            // 因为是在异步模式下，所以可能还没有连接上server end,connect()方法就返回了，所以当还没有连接到server end时做一些其他的事
         }
-        ByteBuffer fileBuffer = charset.encode("C:\\Users\\lihailen\\Desktop\\nio.txt");
+        ByteBuffer fileNameBuffer = charset.encode("C:\\Users\\hailen\\Desktop\\nio.txt");
+        sChannel.write(fileNameBuffer);
+        ByteBuffer lenBuffer = ByteBuffer.allocate(10);
+        lenBuffer.flip();
+        sChannel.write(lenBuffer);
+        lenBuffer.clear();
+        int len = fChannel.read(lenBuffer);
+        while(len > 0) {
+            lenBuffer.flip();
+            sChannel.write(lenBuffer);
+            lenBuffer.clear();
+        }
     }
 
     /**
