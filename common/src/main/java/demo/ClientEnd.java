@@ -4,19 +4,20 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.Scanner;
 
 public class ClientEnd {
-    private static final String SERVER_IP = "127.0.0.1";
     public static final int PORT = 2019;
 
     public static void main(String[] args) throws Exception {
-        SocketAddress serverAddress = new InetSocketAddress(SERVER_IP, PORT);
-        SocketChannel channel = SocketChannel.open(serverAddress);
+        SocketChannel channel = SocketChannel.open(new InetSocketAddress(PORT));
         channel.configureBlocking(false);
-        while(!channel.finishConnect()) {}
-        System.out.println("完成TCP三次握手,开始传输数据");
+        System.out.println("Socket channel boot completed.");
+
+        Scanner scanner = new Scanner(System.in);
+        String content = scanner.nextLine();
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        buffer.put("Hello Sex Girl".getBytes());
+        buffer.put(content.getBytes());
         buffer.flip();
         channel.write(buffer);
         channel.shutdownOutput();

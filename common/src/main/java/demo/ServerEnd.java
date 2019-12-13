@@ -11,35 +11,40 @@ import java.util.Iterator;
 public class ServerEnd {
 
     public static void main(String[] args) throws Exception {
+        ServerSocketChannel channel = ServerSocketChannel.open();
+        // 要监听的端口号
+        channel.bind(new InetSocketAddress(2019));
+        channel.configureBlocking(false);
         Selector selector = Selector.open();
-        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-        serverSocketChannel.configureBlocking(false);
-        // 监听设置的端口号
-        serverSocketChannel.bind(new InetSocketAddress(ClientEnd.PORT));
-        System.out.println("Server End Socket Boot Completed");
+        channel.register(selector, SelectionKey.OP_ACCEPT);
 
-        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+        System.out.println("-->开始单线程轮询注册管道的IO就绪事件");
         while (selector.select() > 0) {
-            System.out.println("====================================================");
-
-            Iterator<SelectionKey> selectionKeys = selector.selectedKeys().iterator();
-            while (selectionKeys.hasNext()) {
-                SelectionKey selectionKey = selectionKeys.next();
-                if (selectionKey.isAcceptable()) {
-                    SocketChannel socketChannel = serverSocketChannel.accept();
+            Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+            while (iterator.hasNext()) {
+                SelectionKey key = iterator.next();
+                if (key.isAcceptable()) {
+                    System.out.println("-->有新的连接进来");
+                    SocketChannel socketChannel = channel.accept();
                     socketChannel.configureBlocking(false);
                     socketChannel.register(selector, SelectionKey.OP_READ);
-                } else if (selectionKey.isReadable()) {
-                    SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
-                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                    for (int len = socketChannel.read(byteBuffer); len > 0; ) {
-                        byteBuffer.flip();
-                        System.out.println(new String(byteBuffer.array(), 0, len));
-                        byteBuffer.clear();
+                } else if (key.isReadable()) {
+                    System.out.println("-->数据包已到达");
+                    Thread.sleep(10000);
+                    System.out.println("=========================================================");
+                    SocketChannel socketChannel = (SocketChannel) key.channel();
+                    socketChannel.configureBlocking(false);
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    int len = socketChannel.read(buffer);
+                    while (len > 0) {
+                        buffer.flip();
+                        System.out.println(new String(buffer.array(), 0, len));
+                        buffer.clear();
+                        len = socketChannel.read(buffer);
                     }
                     socketChannel.close();
                 }
-                selectionKeys.remove();
+                iterator.remove();
             }
         }
     }
