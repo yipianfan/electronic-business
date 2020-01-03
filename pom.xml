@@ -14,6 +14,7 @@
     <module>project-parent</module>
     <module>common</module>
     <module>account-service</module>
+    <module>payment-service</module>
   </modules>
   <packaging>pom</packaging>
 </project>
