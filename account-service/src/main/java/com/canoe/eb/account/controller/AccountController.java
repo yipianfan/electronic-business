@@ -12,7 +12,7 @@ import java.util.Map;
 import static com.canoe.eb.common.entity.ResEntity.ok;
 
 @RestController
-@RequestMapping("account/base")
+@RequestMapping("account")
 public class AccountController {
 
     @PostMapping("register")
