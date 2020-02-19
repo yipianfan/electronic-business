@@ -11,11 +11,21 @@ public class ResEntity<T> {
         this.data = data;
     }
 
-    public static <T> ResEntity<T> ok(T data) {return new ResEntity<>(200, "ok", data);}
+    public static <T> ResEntity<T> ok() {
+        return new ResEntity<>(200, "", null);
+    }
 
-    public static <T> ResEntity<T> r404() {return new ResEntity<>(404, "已逃离地球", null);}
+    public static <T> ResEntity<T> ok(String msg) {
+        return new ResEntity<>(200, msg, null);
+    }
 
-    public static <T> ResEntity<T> result(String msg) {return new ResEntity<>(400, msg, null);}
+    public static <T> ResEntity<T> ok(T data) {
+        return new ResEntity<>(200, "", data);
+    }
+
+    public static <T> ResEntity<T> ok(String msg, T data) {
+        return new ResEntity<>(200, msg, data);
+    }
 
     public int getCode() {return code;}
 
