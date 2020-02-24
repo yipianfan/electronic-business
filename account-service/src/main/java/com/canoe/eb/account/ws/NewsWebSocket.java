@@ -3,7 +3,6 @@ package com.canoe.eb.account.ws;
 import com.canoe.eb.account.bean.dto.News;
 import com.canoe.eb.common.entity.ResEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

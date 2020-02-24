@@ -18,6 +18,5 @@ public class NewsWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry reg) {
         reg.enableSimpleBroker("/news"); // Default prefix is "topic".
-        reg.setApplicationDestinationPrefixes("/news");
     }
 }
