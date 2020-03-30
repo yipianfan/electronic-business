@@ -1,6 +1,6 @@
 package com.canoe.eb.account.ws;
 
-import com.canoe.eb.account.bean.dto.News;
+import com.canoe.eb.account.bean.dto.NewsDTO;
 import com.canoe.eb.common.entity.ResEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -13,7 +13,7 @@ public class NewsWebSocket {
     private SimpMessagingTemplate smt;
 
     @RequestMapping("news/push")
-    public ResEntity<Void> push(News news) {
+    public ResEntity<Void> push(NewsDTO news) {
         smt.convertAndSend("/news/client", news);
         return ResEntity.ok();
     }
