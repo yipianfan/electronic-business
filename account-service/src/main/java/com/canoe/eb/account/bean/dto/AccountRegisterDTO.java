@@ -1,9 +1,17 @@
 package com.canoe.eb.account.bean.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel
 public class AccountRegisterDTO {
-    private String account; // email
+    @ApiModelProperty(value="用于注册的email", required=true)
+    private String account;
+    @ApiModelProperty(value = "密码", required = true)
     private String password;
-    private Integer role; // 1->买家  2->商家
+    @ApiModelProperty("角色 1->买家  2->商家")
+    private Integer role;
+    @ApiModelProperty(value = "验证码", required = true)
     private String captcha;
 
     public String getAccount() {return account;}
