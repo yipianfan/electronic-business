@@ -1,0 +1,10 @@
+git命令行界面清屏:
+reset
+
+本地新建分支:
+git branch branch_name
+
+删除本地分支:
+git branch -d branch_name
+
+
