@@ -15,6 +15,6 @@ public class NewsWebSocket {
     @RequestMapping("news/push")
     public ResEntity<Void> push(NewsDTO news) {
         smt.convertAndSend("/news/client", news);
-        return ResEntity.ok();
+        return ResEntity.ok(null);
     }
 }
