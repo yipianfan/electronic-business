@@ -9,13 +9,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.*;
 
 import static com.canoe.eb.common.entity.ResEntity.ok;
 
 @Api(tags="账号服务")
 @RestController
-@RequestMapping("account")
+@RequestMapping
 public class AccountController {
     @Autowired
     private AccountService accountService;
@@ -27,6 +28,7 @@ public class AccountController {
         return ok(vo);
     }
 
+    @LoadBalanced
     @ApiOperation("根据email查询账号信息")
     @ApiImplicitParam(name="email", value="email", required = true)
     @GetMapping("accountByEmail")

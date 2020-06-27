@@ -1,3 +1,4 @@
+/*
 package com.canoe.eb.account.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,4 @@ public class RedisLock {
         if(v.equals(template.opsForValue().get(key)))
             template.opsForValue().getOperations().delete(key);
     }
-}
+}*/
