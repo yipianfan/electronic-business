@@ -8,6 +8,8 @@ public class ResEntity<T> {
     private String msg;
     private T data;
 
+    public ResEntity() {}
+
     private ResEntity(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
