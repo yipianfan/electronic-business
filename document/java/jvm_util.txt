@@ -1,5 +1,5 @@
 jps(Java Virtual Machine Process Status Tool):用于查看java进程的工具
 jps:输出进程ID与启动类名字
-jps -p:只输出进程ID
+jps -q:只输出进程ID
 jps -l:输出进程ID与启动类的完整路径
 jps -v:输出进程ID与启动类的名字以及jvm的相关配置
