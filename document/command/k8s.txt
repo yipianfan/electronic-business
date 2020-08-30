@@ -1,0 +1,8 @@
+kubectl get namespaces //列出集群中的当前名称空间
+kubectl get nodes  //获取集群节点
+	
+pod:
+kubectl get po -n 名称空间 -o wide //列出指定命名空间下的pod的详细信息(如未指定则默认为default命名空间) 
+kubectl get po -n 名称空间 //列出指定命名空间下的pod的概要信息(如未指定则默认为default命名空间) 
+kubectl describe -n 名称空间 po pod名字
+kubectl logs -f -n 名称空间 pod名字
