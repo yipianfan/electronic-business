@@ -1,0 +1,2 @@
+查看建表语句
+show create table 表名
