@@ -1,0 +1,3 @@
+文件传输:
+	scp source_file user@remote_ip:directory
+	scp -P port source_file user@remote_ip:directory
