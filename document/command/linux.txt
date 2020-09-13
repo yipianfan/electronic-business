@@ -1,0 +1,4 @@
+查看系统信息:
+    uname -a 显示全部信息
+    uname -r 显示内核
+    /etc/redhat-release
