@@ -1,0 +1,3 @@
+docker build -t demo_image . 
+-t:将镜像命名为demo_image
+. 基于当前目录下的Dockerfile来构建镜像
