@@ -10,3 +10,4 @@
     uname -a 显示全部信息
     uname -r 显示内核
     /etc/redhat-release
+    cat /proc/meminfo 查看内存使用
