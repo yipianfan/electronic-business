@@ -11,3 +11,4 @@
     uname -r 显示内核
     /etc/redhat-release
     cat /proc/meminfo 查看内存使用
+    du -sh 查看当前目录占用的空间大小
