@@ -9,3 +9,6 @@ docker images //查看镜像
 Dockerfile:
 	from abc // 定制的镜像是基于abc这个镜像
 	COPY // 将本机文件复制到docker容器中
+
+删除无用的镜像:
+docker image prune -a
